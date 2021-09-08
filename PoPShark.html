@@ -9,8 +9,8 @@
     <body>
         <div>
             
-            <img id="gura" src="image/gura.png" height="480px" width="720px" onclick="pop()">
-            <img id="popgura" style="visibility: hidden;" src="image/popgura.png" height="480px" width="720px" >
+            <img id="gura" style="visibility: visible;" src="image/gura_.png" height="480px" width="720px" onclick="pop()">
+            <img id="popgura" style="visibility: hidden;" src="image/popgura_.png" height="480px" width="720px" >
         </div>
         <!-- <button onclick="myFunction()">Try it</button> -->
     </body>
@@ -19,11 +19,15 @@
         document.onselectstart = function(){
             event.returnValue = false;　//選取事件取消
         }
+        oncontextmenu="return false;";
 
         document.addEventListener('mousedown', pop);
         document.addEventListener('keydown', pop);
+        document.addEventListener('pointerdown', pop);
+
         document.addEventListener('mouseup', notpop);
         document.addEventListener('keyup', notpop);
+        document.addEventListener('pointerup', notpop);
 
         var popsound = new Audio('sound/pop.mp3');
         let counter = 0 ;
@@ -31,15 +35,19 @@
         function pop(){
             if(counter == 0){
                 popsound.play();
-                let gura = document.getElementById("popgura");
-                gura.style = "visibility: visible;";
+                let gura = document.getElementById("gura");
+                let popgura = document.getElementById("popgura");
+                gura.style = "visibility: hidden;";
+                popgura.style = "visibility: visible;";
                 counter = 1;
             }
         }
 
         function notpop(){
-            let gura = document.getElementById("popgura");
-            gura.style = "visibility: hidden;";
+            let gura = document.getElementById("gura");
+            let popgura = document.getElementById("popgura");
+            gura.style = "visibility: visible;";
+            popgura.style = "visibility: hidden;";
             counter = 0;
         }
     </script>
