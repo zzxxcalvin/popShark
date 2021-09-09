@@ -7,10 +7,15 @@
         <title>PoPShark</title>
     </head>
     <body>
-        <div>
-            
-            <img id="gura" style="visibility: visible;" src="image/gura_.png" height="480px" width="720px" onclick="pop()">
-            <img id="popgura" style="visibility: hidden;" src="image/popgura_.png" height="480px" width="720px" >
+        <div class="cat-container">
+            <div class="count">
+                0
+            </div>
+
+            <div class="popcat">
+                <img id="gura" class="responsive" style="visibility: visible;" src="image/gura_.png"  onclick="pop()">
+                <img id="popgura" class="responsive" style="visibility: hidden;" src="image/popgura_.png" height="480px" width="720px" >
+            </div>
         </div>
         <!-- <button onclick="myFunction()">Try it</button> -->
     </body>
@@ -30,17 +35,24 @@
         document.addEventListener('pointerup', notpop);
 
         var popsound = new Audio('sound/pop.mp3');
-        let counter = 0 ;
+        let cond = 0 ;
+        let counter = 0;
+
+        windows.onload = ()=>{
+            document.getElementsByClassName('count')[0].innerHTML = counter;
+        }
 
         function pop(){
-            if(counter == 0){
+            if(cond == 0){
                 popsound.play();
                 let gura = document.getElementById("gura");
                 let popgura = document.getElementById("popgura");
                 gura.style = "visibility: hidden;";
                 popgura.style = "visibility: visible;";
-                counter = 1;
+                cond = 1;
+                counter++;
             }
+            document.getElementsByClassName('count')[0].innerHTML = counter;
         }
 
         function notpop(){
@@ -48,7 +60,7 @@
             let popgura = document.getElementById("popgura");
             gura.style = "visibility: visible;";
             popgura.style = "visibility: hidden;";
-            counter = 0;
+            cond = 0;
         }
     </script>
 </html>

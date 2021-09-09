@@ -18,3 +18,26 @@ div img{
     bottom:0;
     margin:auto;
 }
+
+.responsive{
+    max-width: 100%;
+    height:auto;
+}
+
+/* #count{
+    display:flex;
+} */
+
+.cat-container{
+    display:flex;
+    text-align: center;
+    flex-direction: column;
+    
+}
+.count{
+    align-self: center;
+    flex-shrink: 5;
+}
+.popcat{
+    flex-grow: 3;
+}
